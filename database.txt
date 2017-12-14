@@ -1,0 +1,53 @@
+drop database if exists address;
+create database address;
+use address;
+
+
+create table CONTACT
+(
+contact_id varchar(5) primary key,
+first_name varchar(30) not null,
+middle_name varchar(50),
+last_name varchar(30),
+groups varchar(20),
+add_line1 varchar(30),
+add_line2 varchar(30),
+city varchar(30),
+state varchar(30),
+dob date,
+pin int(6)
+);
+
+
+create table MOBILE
+(
+contact_id varchar(5),
+mob_number bigint(11),
+foreign key(contact_id) references CONTACT(contact_id) on update cascade on delete restrict
+);
+
+
+create table email
+(
+contact_id varchar(5),
+email_id varchar(30),
+foreign key(contact_id) references CONTACT(contact_id) on update cascade on delete restrict
+);
+
+insert into CONTACT values ('C1001','ANUJ','','MODI','FAMILY','L-365 SECTOR-23','SANJAY NAGAR','GHAZIABAD','UTTAR PRADESH','1999-06-04',201002);
+insert into CONTACT values ('C1002','AMAN','','SHARMA','FRIEND','HOUSE-20','AWANTIKA','GHAZIABAD','UTTAR PRADESH','2000-03-01',201002);
+insert into CONTACT values ('C1003','MOHD','RAFEY','TARAFADAR','FRIEND','HOUSE-420','TELIARGANJ','ALLAHABAD','UTTAR PRADESH','1998-04-10',201002);
+
+insert into mobile values('C1001',9711523327);
+insert into mobile values('C1001',9811998651);
+insert into mobile values('C1001',9818959829);
+insert into mobile values('C1002',9836472635);
+insert into mobile values('C1003',8825475937);
+insert into mobile values('C1002',9263683739);
+
+insert into email values('C1001','anujmodi2011@gmail.com');
+insert into email values('C1001','anuj5677modi@outlook.com');
+insert into email values('C1003','rafey.tarafadar@gmail.com');
+insert into email values('C1002','aman.sharma@gmail.com');
+insert into email values('C1003','rafey.mohd@yahoo.com');
+
